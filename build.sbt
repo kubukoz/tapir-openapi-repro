@@ -4,9 +4,11 @@ lazy val root = (project in file("."))
     name := "tapir-openapi-repro",
     libraryDependencies ++= Seq(
       "com.softwaremill.sttp.tapir" %% "tapir-core" % "0.16.1",
+      "com.softwaremill.sttp.tapir" %% "tapir-http4s-server" % "0.16.1",
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % "0.16.1",
       "com.softwaremill.sttp.tapir" %% "tapir-openapi-docs" % "0.16.1",
-      "com.softwaremill.sttp.tapir" %% "tapir-openapi-circe-yaml" % "0.16.1"
+      "com.softwaremill.sttp.tapir" %% "tapir-openapi-circe-yaml" % "0.16.1",
+      "org.http4s" %% "http4s-blaze-server" % "0.21.5"
     )
   )
 
