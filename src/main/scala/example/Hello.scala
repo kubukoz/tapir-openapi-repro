@@ -38,12 +38,11 @@ object Hello extends IOApp {
 
   import sttp.tapir.server.http4s._
 
+  val server = BlazeServerBuilder[IO](ExecutionContext.global)
+    .bindHttp(8080, "0.0.0.0")
+    .withHttpApp(endpoints.toRoutes.orNotFound)
+    .resource
+
   def run(args: List[String]): IO[ExitCode] =
-    BlazeServerBuilder[IO](ExecutionContext.global)
-      .bindHttp(8080, "0.0.0.0")
-      .withHttpApp(
-        endpoints.toRoutes.orNotFound
-      )
-      .resource
-      .use(_ => IO.never)
+    server.use(_ => IO.never)
 }
